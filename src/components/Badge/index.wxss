@@ -1,0 +1,72 @@
+page{
+  --van-badge-size: 16px;
+  --van-badge-color: white;
+  --van-badge-padding: 0 3px;
+  --van-badge-font-size: 20rpx;
+  --van-badge-font-weight: 700;
+  --van-badge-border-width: 1px;
+  --van-badge-background: red;
+  --van-badge-dot-color: red;
+  --van-badge-dot-size: 8rpx;
+  --van-radius-max: 999px;
+}
+
+.badge-view {
+  position: relative;
+}
+
+.badge-dot {
+  width: var(--van-badge-dot-size);
+  min-width: 0;
+  height: var(--van-badge-dot-size);
+  background: var(--van-badge-dot-color);
+  border-radius: 100%;
+  border: none;
+  padding: 0;
+}
+
+
+.badge {
+  position: absolute;
+   -webkit-transform: translate3d(0, 0, 0); 
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: var(--van-badge-size);
+  color: var(--van-badge-color);
+  font-size: var(--van-badge-font-size);
+  line-height: 1.2;
+  text-align: center;
+  background: var(--van-badge-background);
+  border-radius: var(--van-radius-max);
+  z-index: 20;
+  padding: 0 5rpx;
+}
+
+.badge-fixed {
+  position: absolute;
+  transform-origin: 100%;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+}

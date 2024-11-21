@@ -1,0 +1,28 @@
+.van-pull-refresh {
+  overflow: hidden;
+}
+
+.van-pull-refresh__track {
+  position: relative;
+  height: 100%;
+  transition-property: transform;
+  will-change: transform;
+}
+
+.van-pull-refresh__head {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  min-height: 50px;
+  overflow: hidden;
+  color: rgb(175, 175, 175);
+  font-size: 26rpx;
+  line-height: 40rpx;
+  text-align: center;
+  transform: translateY(-100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

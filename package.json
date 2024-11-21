@@ -1,0 +1,19 @@
+{
+  "name": "easespace-ui",
+  "version": "1.0.2",
+  "description": "轻快weappui",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp"
+  },
+  "author": "zhaozw",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^5.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-copy": "^5.0.0"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2"
+  }
+}

@@ -1,0 +1,5 @@
+<view class="badge-view">
+  <slot></slot>
+  <slot name="content" wx:if="{{useSlot.content}}"></slot>
+  <view wx:else class="badge-fixed badge {{position}}" style="{{style}} {{badgeStyle}}">{{content}}</view>
+</view>

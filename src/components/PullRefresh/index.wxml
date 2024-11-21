@@ -1,0 +1,23 @@
+<view class="van-pull-refresh">
+  <view class="van-pull-refresh__track" style="transition-duration: {{state.duration}}ms ; transform: translate3d(0, {{state.distance || 0}}px, 0);" bind:touchstart="touchstart" catch:touchmove="touchmove" bind:touchend="onTouchEnd">
+    <view class="van-pull-refresh__head" style="min-height:{{headHeight}}px;">
+      <!-- 显示插槽或默认内容 -->
+      <block wx:if="{{!useSlot.headSlot}}">
+        <block wx:if="{{state.status === 'pulling'}}">
+          <slot wx:if="{{useSlot.pullingSlot}}" name="pulling"></slot>
+          <text wx:else>{{pullingText}}</text>
+        </block>
+        <block wx:if="{{state.status === 'loosing'}}">
+          <slot wx:if="{{useSlot.loosingSlot}}" name="loosing"></slot>
+          <text wx:else>{{loosingText}}</text>
+        </block>
+        <block wx:if="{{state.status === 'loading'}}">
+          <slot wx:if="{{useSlot.loadingSlot}}" name="loading"></slot>
+          <loading wx:else></loading>
+        </block>
+      </block>
+      <slot v-else name="header"></slot>
+    </view>
+    <slot></slot>
+  </view>
+</view>

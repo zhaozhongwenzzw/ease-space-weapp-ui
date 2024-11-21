@@ -1,0 +1,8 @@
+src/config
+src/assets
+src/utils/bideo.js
+vue.config.js
+mock/
+*.png
+*.jpg
+

@@ -1,0 +1,18 @@
+<view  class="demo-home-nav">
+  <view class="demo-logo">
+    <image style="width: 90rpx; height:120rpx;" src="/image/logo.png" mode=""/>
+    <view class="logo-right">
+      <image style="width: 380rpx; height: 70rpx; display: block;" src="{{logo1}}" mode=""/>
+      <view style="font-size: 26rpx;">轻快</view>
+    </view>
+  </view>
+  <view class="demo-home" wx:for="{{config}}" wx:key="index">
+    <view class="demo-home-nav__title">{{ item.title }}</view>
+    <view class="demo-home-nav__group">
+      <navigator class="item-nav" wx:for="{{item.nav}}" wx:for-item="navitem" wx:key="index" url="{{demoBaseUrl + navitem.url + '/index'}}">
+        <text>{{ navitem.name }}</text>
+        <image style="width: 40rpx; height: 40rpx;" src="{{ArrowRight}}" mode=""/>
+      </navigator>
+    </view>
+  </view>
+</view>

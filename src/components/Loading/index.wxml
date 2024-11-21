@@ -1,2 +1,6 @@
-<image src="{{svgImg}}" style="width: 70rpx; height: 70rpx;"/>
-<!-- <div class="loading"></div> -->
+<view class="loading" style="flex-direction: {{vertical? 'column':'row'}} ;">
+  <image src="{{svgImg}}" style="width: {{size}}px; height: {{size}}px; margin-bottom: 10rpx;"/>
+  <text class="loading__text">
+    <slot></slot>
+  </text>
+</view>

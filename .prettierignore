@@ -1,0 +1,12 @@
+/dist/*
+.local
+.output.js
+/node_modules/**
+
+**/*.svg
+**/*.sh
+**/*.png
+**/*.jpg
+
+/miniprogram_npm/*
+/miniprogram_dist/*

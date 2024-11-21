@@ -1,0 +1,10 @@
+ .demo-van-pull-refresh {
+  height: calc(100vh - 50px);
+}
+
+.doge {
+  width: 140px;
+  height: 72px;
+  margin-top: 8px;
+  border-radius: 4px;
+}

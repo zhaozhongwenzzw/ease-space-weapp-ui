@@ -1,0 +1,10 @@
+<view>
+  <view>
+    基本使用
+  </view>
+  <loading></loading>
+</view>
+<loading>加载中...</loading>
+<loading color="black">加载中...</loading>
+<loading size="30">加载中...</loading>
+<loading vertical>加载中...</loading>

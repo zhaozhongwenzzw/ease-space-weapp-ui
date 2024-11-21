@@ -1,38 +1,13 @@
 .loading {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  border: 3px solid #3cefff;
-  overflow: hidden;
-  animation: spin 3s ease infinite;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.loading::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  width: 20px;
-  height: 20px;
-  background-color: hsla(185, 100%, 62%, 0.75);
-  transform-origin: center bottom;
-  transform: scaleY(1);
-  animation: fill 3s linear infinite;
-}
-
-@keyframes spin {
-  50%,
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fill {
-  25%,
-  50% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+.loading__text {
+  display: inline-block;
+  color: #969799;
+  font-size: 20rpx;
+  vertical-align: middle;
+  margin-left: 10rpx;
 }

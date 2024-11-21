@@ -1,0 +1,22 @@
+<van-tabs active="{{ active }}" bind:change="onChange">
+  <van-tab title="基础用法">
+    <PullRefresh status="{{status}}" bind:refresh="refresh1">
+      <view class="demo-van-pull-refresh">刷新次数: {{ count }}</view>
+    </PullRefresh>
+  </van-tab>
+  <van-tab title="自定义下拉">
+    <PullRefresh headHeight="{{80}}" useSlot="{{useSlot}}" status="{{status}}" bind:refresh="refresh2" bind:change="statusChange">
+      <view class="demo-van-pull-refresh">
+       自定义下拉
+      </view>
+      <view slot="header">
+        <image wx:if="{{distance < 80}}" class="doge" style="transform: scale({{distance / 80}})" src="https://fastly.jsdelivr.net/npm/@vant/assets/doge.png" mode=""/>
+        <image wx:else class="doge" src="https://fastly.jsdelivr.net/npm/@vant/assets/doge-fire.jpeg" mode=""/>
+      </view>
+    </PullRefresh>
+  </van-tab>
+  <van-tab title="list">
+    如果包裹内容有
+  </van-tab>
+  <van-tab title="标签 4">内容 4</van-tab>
+</van-tabs>

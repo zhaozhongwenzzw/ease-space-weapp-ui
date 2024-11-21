@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "PullRefresh": "/src/components/PullRefresh/index",
+    "loading": "/src/components/Loading/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
+  }
+}

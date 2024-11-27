@@ -19,5 +19,23 @@
       <slot v-else name="header"></slot>
     </view>
     <slot></slot>
+    <view class="van-pull-refresh__foot" style="min-height:{{footHeight}}px;">
+      <!-- 显示插槽或默认内容 -->
+      <block wx:if="{{!useSlot.footSlot}}">
+        <block wx:if="{{state.status === 'uping'}}">
+          <slot wx:if="{{useSlot.upingSlot}}" name="uping"></slot>
+          <text wx:else>{{upingText}}</text>
+        </block>
+        <block wx:if="{{state.status === 'loosing'}}">
+          <slot wx:if="{{useSlot.upLoosingSlot}}" name="uploosing"></slot>
+          <text wx:else>{{upLoosingText}}</text>
+        </block>
+        <block wx:if="{{state.status === 'loading'}}">
+          <slot wx:if="{{useSlot.upLoadingSlot}}" name="upLoading"></slot>
+          <loading wx:else></loading>
+        </block>
+      </block>
+      <slot v-else name="foot"></slot>
+    </view>
   </view>
 </view>

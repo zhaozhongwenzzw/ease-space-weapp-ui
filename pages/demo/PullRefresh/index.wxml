@@ -1,6 +1,6 @@
 <van-tabs active="{{ active }}" bind:change="onChange">
   <van-tab title="基础用法">
-    <PullRefresh status="{{status}}" bind:refresh="refresh1">
+    <PullRefresh status="{{status}}" bind:refresh="refresh1" bind:upRefresh="refresh1" isUpPull="{{true}}">
       <view class="demo-van-pull-refresh">刷新次数: {{ count }}</view>
     </PullRefresh>
   </van-tab>

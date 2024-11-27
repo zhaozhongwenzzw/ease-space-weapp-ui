@@ -26,3 +26,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.van-pull-refresh__foot {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 50px;
+  overflow: hidden;
+  color: rgb(175, 175, 175);
+  font-size: 26rpx;
+  line-height: 40rpx;
+  text-align: center;
+  transform: translateY(100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

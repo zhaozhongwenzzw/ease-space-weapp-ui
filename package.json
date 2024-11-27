@@ -1,11 +1,16 @@
 {
   "name": "easespace-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "轻快weappui",
   "main": "index.js",
   "scripts": {
     "build": "gulp"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhaozhongwenzzw/ease-space-weapp-ui"
+  },
+  "keywords": ["weapp"],
   "author": "zhaozw",
   "license": "ISC",
   "devDependencies": {

@@ -15,9 +15,17 @@ Component({
     },
     pullDistance: {
       type: Number,
-      value: ''
+      value: 0
+    },
+    upDistance: {
+      type: Number,
+      value: 0
     },
     headHeight: {
+      type: Number,
+      value: DEFAULT_HEAD_HEIGHT
+    },
+    footHeight: {
       type: Number,
       value: DEFAULT_HEAD_HEIGHT
     },
@@ -29,13 +37,26 @@ Component({
       type: String,
       value: '下拉即可刷新...'
     },
+    upingText: {
+      type: String,
+      value: '上拉即可加载...'
+    },
     loosingText: {
       type: String,
       value: '释放即可刷新...'
     },
+    upLoosingText: {
+      type: String,
+      value: '释放即可加载...'
+    },
     loadingText: {
       type: String,
       value: '加载中...'
+    },
+    //是否使用上拉
+    isUpPull: {
+      type: Boolean,
+      value: false
     },
     useSlot: {
       type: Object,
@@ -44,6 +65,10 @@ Component({
         loadingSlot: false,
         loosingSlot: false,
         pullingSlot: false,
+        footSlot: false,
+        upingSlot: false,
+        upLoosingSlot: false,
+        upLoadingSlot: false
       }
     }
   },
@@ -90,6 +115,9 @@ Component({
       if (this.data.state.status === 'loosing') {
         this.setStatus(this.properties.headHeight, true);
         this.refresh();
+      } else if(this.data.state.status === 'uping') {
+         this.setStatus(-this.properties.footHeight, true);
+         this.upRefresh();
       } else {
         this.setStatus(0);
       }
@@ -108,9 +136,14 @@ Component({
     move(event) {
       const touch = event.touches[0];
       this.data.deltaY = touch.clientY - this.data.startY;
-      if (this.data.deltaY>= 0 && this.isTouchable()) { // 每 16ms 更新一次
-        this.setStatus(this.ease(this.data.deltaY));
+      if (this.properties.isUpPull) {
+          this.setStatus(this.ease(this.data.deltaY));
+      }else {
+        if (this.data.deltaY>= 0 && this.isTouchable()) { 
+          this.setStatus(this.ease(this.data.deltaY));
+        }
       }
+
     },
     //动画
     ease(distance) {
@@ -123,13 +156,13 @@ Component({
       if (distance <= pullDistance) {
         // 初始阶段：线性阻尼
         return Math.round(distance * initialDamping);
-      } else if (distance <= pullDistance * 2) {
+      } else if (distance <= maxDistance) {
         // 中间阶段：逐步减速
         const excess = distance - pullDistance;
         return Math.round(pullDistance * initialDamping + excess * secondaryDamping);
       } else {
         // 最终阶段：极限阻尼，缓慢变化
-        const excess = distance - pullDistance * 2;
+        const excess = distance - maxDistance;
         return Math.round(pullDistance * (initialDamping + secondaryDamping) + excess * finalDamping);
       }
     }
@@ -138,6 +171,8 @@ Component({
     setStatus(distance, isLoading) {
       //获取触发下拉刷新的距离
       const pullDistance = +(this.properties.pullDistance || this.properties.headHeight);
+      //获取触发上拉加载的距离
+      const upDistance = +(this.properties.upDistance || this.properties.footHeight);
       this.setData({
         [`state.distance`]: distance
       })
@@ -146,6 +181,8 @@ Component({
         this.change('loading')
       } else if (distance === 0) {
         this.change('normal')
+      }else if (distance < 0) {
+        this.change('uping')
       } else if (distance < pullDistance) {
         this.change('pulling')
       } else {
@@ -165,6 +202,10 @@ Component({
     //下拉刷新触发时
     refresh() {
       this.triggerEvent('refresh');
+    },
+    //上拉刷新触发时
+    upRefresh() {
+      this.triggerEvent('upRefresh');
     }
   }
 })

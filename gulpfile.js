@@ -1,7 +1,7 @@
 const gulp = require("gulp");
 const clean = require("gulp-clean");
 const copy = require("gulp-copy");
-const { spawn } = require("child_process");
+const { spawn, exec } = require("child_process");
 
 // 清空 miniprogram_dist 目录
 gulp.task("clean", function () {
@@ -12,13 +12,20 @@ gulp.task("clean", function () {
 
 // 复制文件到 miniprogram_dist
 gulp.task("copy", function () {
-  return gulp.src(["src/components/**/*","src/index.js"]).pipe(copy("miniprogram_dist", { prefix: 1 }));
+  return gulp.src(["src/components/**/*","src/index.js" ,"package.json"]).pipe(copy("miniprogram_dist", { prefix: 1 }));
 });
 
 // 打包完成后打印日志
 gulp.task("log", function (done) {
   console.log("打包完成");
   done();
+});
+
+gulp.task('changeDir', function(cb) {
+  exec('cd ./miniprogram_dist', function(err, stdout, stderr) {
+    console.log(stdout);
+    cb(err);
+  });
 });
 
 // 执行 npm publish 并支持 OTP 输入
@@ -37,4 +44,4 @@ gulp.task("publish", function (done) {
 });
 
 // 默认任务：清空 + 复制 + 打印日志 + 发布
-gulp.task("default", gulp.series("clean", "copy", "log", "publish"));
+gulp.task("default", gulp.series("clean", "copy", "log", "changeDir", "publish"));
